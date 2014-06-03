@@ -182,7 +182,7 @@ public class MakeExercise extends Activity {
 		// TODO Auto-generated method stub
 		if(keyCode==KeyEvent.KEYCODE_BACK&&event.getRepeatCount()==0){
 			Intent intent = new Intent();
-			intent.setClass(MakeExercise.this, MakeExercise.class);
+			intent.setClass(MakeExercise.this, MainActivity.class);
 			startActivity(intent);
 			MakeExercise.this.finish();	
 			return true;

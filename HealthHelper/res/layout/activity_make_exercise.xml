@@ -83,16 +83,6 @@
            android:layout_toRightOf="@+id/pickdate"
            android:text="选择时间" />
 
-       <TextView
-           android:id="@+id/textView1"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_alignLeft="@+id/textView2"
-           android:layout_alignParentTop="true"
-           android:layout_marginTop="32dp"
-           android:text="运动类型："
-           android:textAppearance="?android:attr/textAppearanceMedium" />
-
        <EditText
            android:id="@+id/showdate"
            android:layout_width="fill_parent"
@@ -113,7 +103,7 @@
 
        <EditText
            android:id="@+id/showtime"
-           android:layout_width="fill_parent"
+           android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_alignBaseline="@+id/picktime"
            android:layout_alignBottom="@+id/picktime"
@@ -123,5 +113,15 @@
 
            <requestFocus />
        </EditText>
+
+       <TextView
+           android:id="@+id/textView1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentTop="true"
+           android:layout_marginTop="14dp"
+           android:layout_toLeftOf="@+id/button2"
+           android:text="运动类型："
+           android:textAppearance="?android:attr/textAppearanceMedium" />
   
 </RelativeLayout>

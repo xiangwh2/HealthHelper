@@ -16,10 +16,23 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import java.util.Calendar;
 
+import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.TimePickerDialog;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TimePicker;
 public class MakePlan extends Activity {
 	private Button button_finish;
-	private EditText edit_time, edit_alltime, edit_cal;
+	private EditText edit_date,edit_time, edit_alltime, edit_cal;
 	private Spinner spin_dest, spin_friend;
 	private RadioGroup m_rGroup;
 	private RadioButton m_rButton0,m_rButton1;
@@ -29,7 +42,21 @@ public class MakePlan extends Activity {
 	private int eCal;	
 	private HealthHelper appHealthHelper;
 	private boolean change;
+	private EditText showDate = null;
+	private Button pickDate = null;
+	private EditText showTime = null;
+	private Button pickTime = null;
 	
+	private static final int SHOW_DATAPICK = 0; 
+    private static final int DATE_DIALOG_ID = 1;  
+    private static final int SHOW_TIMEPICK = 2;
+    private static final int TIME_DIALOG_ID = 3;
+    
+    private int mYear;  
+    private int mMonth;
+    private int mDay; 
+    private int mHour;
+    private int mMinute;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		eType = "跑步";
@@ -40,7 +67,18 @@ public class MakePlan extends Activity {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_make_plan);
-		
+		 initializeViews();
+	        
+	        final Calendar c = Calendar.getInstance();
+	        mYear = c.get(Calendar.YEAR);  
+	        mMonth = c.get(Calendar.MONTH);  
+	        mDay = c.get(Calendar.DAY_OF_MONTH);
+	        
+	        mHour = c.get(Calendar.HOUR_OF_DAY);
+	        mMinute = c.get(Calendar.MINUTE);
+	        
+	        setDateTime(); 
+	        setTimeOfDay();
 		appHealthHelper = (HealthHelper)getApplicationContext();	
 		//------------------button---------------
 		button_finish = (Button) findViewById(R.id.button1);		
@@ -48,10 +86,16 @@ public class MakePlan extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				eTime = edit_time.getText().toString();
+				eTime = edit_date.getText().toString()+" "+edit_time.getText().toString();
 				eAllTime = edit_alltime.getText().toString();
-				eCal = Integer.parseInt(edit_cal.getText().toString());
-							
+				try{
+					eCal = Integer.parseInt(edit_cal.getText().toString());
+				}
+				catch(Exception e)
+				{
+					appHealthHelper.DisplayToast("注意不要超过人类极限哦~亲！");
+					return ;
+				}
 				Exercise oneExercise = new Exercise(eType, eTime, dest, eCal);
 				appHealthHelper.getExerManager().getExercisesList().add(oneExercise);
 				
@@ -64,7 +108,8 @@ public class MakePlan extends Activity {
 		});
 		
 		//-----------------editView---------------
-		edit_time = (EditText) findViewById(R.id.editText1);
+		edit_date = (EditText) findViewById(R.id.showdate);
+		edit_time = (EditText) findViewById(R.id.showtime);
 		edit_alltime = (EditText) findViewById(R.id.editText2);
 		edit_cal = (EditText) findViewById(R.id.editText3);
 		
@@ -148,4 +193,147 @@ public class MakePlan extends Activity {
 		}
 		return false;
 	}	
+	private void initializeViews(){
+        showDate = (EditText) findViewById(R.id.showdate);  
+        pickDate = (Button) findViewById(R.id.pickdate); 
+        showTime = (EditText)findViewById(R.id.showtime);
+        pickTime = (Button)findViewById(R.id.picktime);
+        
+        pickDate.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+	           Message msg = new Message(); 
+	           if (pickDate.equals((Button) v)) {  
+	              msg.what = MakePlan.SHOW_DATAPICK;  
+	           }  
+	           MakePlan.this.dateandtimeHandler.sendMessage(msg); 
+			}
+		});
+        
+        pickTime.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+	           Message msg = new Message(); 
+	           if (pickTime.equals((Button) v)) {  
+	              msg.what = MakePlan.SHOW_TIMEPICK;  
+	           }  
+	           MakePlan.this.dateandtimeHandler.sendMessage(msg); 
+			}
+		});
+    }
+
+    /**
+     * 设置日期
+     */
+	private void setDateTime(){
+       final Calendar c = Calendar.getInstance();  
+       
+       mYear = c.get(Calendar.YEAR);  
+       mMonth = c.get(Calendar.MONTH);  
+       mDay = c.get(Calendar.DAY_OF_MONTH); 
+  
+       updateDateDisplay(); 
+	}
+	
+	/**
+	 * 更新日期显示
+	 */
+	private void updateDateDisplay(){
+       showDate.setText(new StringBuilder().append(mYear).append("-")
+    		   .append((mMonth + 1) < 10 ? "0" + (mMonth + 1) : (mMonth + 1)).append("-")
+               .append((mDay < 10) ? "0" + mDay : mDay)); 
+	}
+	
+    /** 
+     * 日期控件的事件 
+     */  
+    private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {  
+  
+       public void onDateSet(DatePicker view, int year, int monthOfYear,  
+              int dayOfMonth) {  
+           mYear = year;  
+           mMonth = monthOfYear;  
+           mDay = dayOfMonth;  
+
+           updateDateDisplay();
+       }  
+    }; 
+	
+	/**
+	 * 设置时间
+	 */
+	private void setTimeOfDay(){
+	   final Calendar c = Calendar.getInstance(); 
+       mHour = c.get(Calendar.HOUR_OF_DAY);
+       mMinute = c.get(Calendar.MINUTE);
+       updateTimeDisplay();
+	}
+	
+	/**
+	 * 更新时间显示
+	 */
+	private void updateTimeDisplay(){
+       showTime.setText(new StringBuilder().append(mHour).append(":")
+               .append((mMinute < 10) ? "0" + mMinute : mMinute)); 
+	}
+    
+    /**
+     * 时间控件事件
+     */
+    private TimePickerDialog.OnTimeSetListener mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+		
+		@Override
+		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+			mHour = hourOfDay;
+			mMinute = minute;
+			
+			updateTimeDisplay();
+		}
+	};
+    
+    @Override  
+    protected Dialog onCreateDialog(int id) {  
+       switch (id) {  
+       case DATE_DIALOG_ID:  
+           return new DatePickerDialog(this, mDateSetListener, mYear, mMonth,  
+                  mDay);
+       case TIME_DIALOG_ID:
+    	   return new TimePickerDialog(this, mTimeSetListener, mHour, mMinute, true);
+       }
+    	   
+       return null;  
+    }  
+  
+    @Override  
+    protected void onPrepareDialog(int id, Dialog dialog) {  
+       switch (id) {  
+       case DATE_DIALOG_ID:  
+           ((DatePickerDialog) dialog).updateDate(mYear, mMonth, mDay);  
+           break;
+       case TIME_DIALOG_ID:
+    	   ((TimePickerDialog) dialog).updateTime(mHour, mMinute);
+    	   break;
+       }
+    }  
+  
+    /** 
+     * 处理日期和时间控件的Handler 
+     */  
+    Handler dateandtimeHandler = new Handler() {
+  
+       @Override  
+       public void handleMessage(Message msg) {  
+           switch (msg.what) {  
+           case MakePlan.SHOW_DATAPICK:  
+               showDialog(DATE_DIALOG_ID);  
+               break; 
+           case MakePlan.SHOW_TIMEPICK:
+        	   showDialog(TIME_DIALOG_ID);
+        	   break;
+           }  
+       }  
+  
+    }; 
 }
