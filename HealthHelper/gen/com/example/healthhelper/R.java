@@ -59,6 +59,7 @@ public final class R {
         public static final int activity_manage_exercises=0x7f030003;
         public static final int activity_manage_friend=0x7f030004;
         public static final int activity_show_exercise=0x7f030005;
+        public static final int activity_step_count=0x7f030006;
     }
     public static final class menu {
         public static final int main=0x7f070000;
@@ -67,6 +68,7 @@ public final class R {
         public static final int manage_exercises=0x7f070003;
         public static final int manage_friend=0x7f070004;
         public static final int show_exercise=0x7f070005;
+        public static final int step_count=0x7f070006;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -78,6 +80,7 @@ public final class R {
         public static final int title_activity_manage_exercises=0x7f050006;
         public static final int title_activity_manage_friend=0x7f050007;
         public static final int title_activity_show_exercise=0x7f050005;
+        public static final int title_activity_step_count=0x7f050009;
     }
     public static final class style {
         /** 

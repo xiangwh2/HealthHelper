@@ -81,21 +81,28 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-             <EditText android:id="@+id/showdate" android:layout_width="fill_parent"  
-           android:layout_height="wrap_content" android:layout_weight="1"/>  
+            android:layout_height="wrap_content" >  
        <Button android:id="@+id/pickdate" android:layout_width="wrap_content"  
            android:layout_height="wrap_content" android:text="选择日期"/>  
            
              <EditText android:id="@+id/showtime" android:layout_width="fill_parent"  
            android:layout_height="wrap_content" android:layout_weight="1"/>  
        <Button android:id="@+id/picktime" android:layout_width="wrap_content"  
-           android:layout_height="wrap_content" android:text="选择时间"/> 
+           android:layout_height="wrap_content" android:text="选择时间"/>
+
+       <EditText
+           android:id="@+id/showdate"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:ems="10" >
+
+           <requestFocus />
+       </EditText>
 
             <EditText
                 android:id="@+id/editText2"
-                android:layout_width="130dp"
+                android:layout_width="56dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30px"
                 android:ems="10" />
@@ -170,6 +177,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/linearLayout1"
         android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/linearLayout1"
         android:text="完成" />
 
 </RelativeLayout>

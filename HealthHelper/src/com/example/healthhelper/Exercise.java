@@ -64,6 +64,10 @@ public class Exercise implements Cloneable{
 		return Count;
 	}
 	
+	public void setCount(int c) {
+		Count = c;
+	}
+	
 	public Object clone() throws CloneNotSupportedException   {
 		Exercise cloned = (Exercise) super.clone();		
 		cloned.friends.addAll(friends);

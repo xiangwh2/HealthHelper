@@ -10,5 +10,6 @@
     <string name="title_activity_manage_exercises">ManageExercises</string>
     <string name="title_activity_manage_friend">ManageFriend</string>
     <string name="title_activity_make_plan">MakePlan</string>
+    <string name="title_activity_step_count">StepCount</string>
 
 </resources>

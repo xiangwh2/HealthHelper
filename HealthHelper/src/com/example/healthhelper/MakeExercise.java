@@ -50,7 +50,7 @@ public class MakeExercise extends Activity {
 	private HealthHelper appHealthHelper;
 	private String eType, dest, eTime;	
 	private boolean start;
-	private Button button_start, button_show;
+	private Button button_start;
 	private EditText showDate = null;
 	private Button pickDate = null;
 	private EditText showTime = null;
@@ -94,8 +94,7 @@ public class MakeExercise extends Activity {
 		m_rGroup = (RadioGroup) findViewById(R.id.radioGroup1);
 		m_rButton0 = (RadioButton) findViewById(R.id.radio0);
 		m_rButton1 = (RadioButton) findViewById(R.id.radio1);		
-		button_start = (Button) findViewById(R.id.button1);
-		button_show = (Button) findViewById(R.id.button2);	
+		button_start = (Button) findViewById(R.id.button1);		
 		
 		//-----Spinner-----
 		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,m_dest);
@@ -118,41 +117,25 @@ public class MakeExercise extends Activity {
 		button_start.setText("开始");		
 		button_start.setOnClickListener(new Button.OnClickListener() {
 			@Override
-			public void onClick(View v) {
-				startStepService();
+			public void onClick(View v) {								
+				start = true;
+				eTime = m_EditTextDate.getText().toString()+"   "+m_EditTextTime.getText().toString();												
+				Exercise oneExercise = new Exercise(eType, eTime, dest);
+				appHealthHelper.getExerManager().addOneExercise(oneExercise);									
 				
-				if (button_start.getText().toString() == "开始") {				
-					button_start.setText("停止");	
-					start = true;
-					eTime = m_EditTextDate.getText().toString()+"   "+m_EditTextTime.getText().toString();												
-					Exercise oneExercise = new Exercise(eType, eTime, dest);
-					appHealthHelper.getExerManager().addOneExercise(oneExercise);
-					
-					int s = appHealthHelper.getStep();
-					appHealthHelper.DisplayToast("Step:" + s);
-					
-					try {					
-						appHealthHelper.setCurrentExercise(oneExercise);				
-					} catch (CloneNotSupportedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+				try {					
+					appHealthHelper.setCurrentExercise(oneExercise);				
+				} catch (CloneNotSupportedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-				else {				
-					button_start.setText("开始");
-					start = false;
-				}					
-			}
-		});
-		
-		button_show.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) {
+				
 				Intent intent = new Intent();
-				intent.setClass(MakeExercise.this, ShowExercise.class);
+				intent.setClass(MakeExercise.this, StepCount.class);
 				startActivity(intent);
-				MakeExercise.this.finish();	
+				MakeExercise.this.finish();				
 			}
-		});
+		});			
 		
 		//--------Radio----------------------------
 		m_rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {			
@@ -189,29 +172,7 @@ public class MakeExercise extends Activity {
 		}
 		return false;
 	}	
-	
-	private StepService mService;
-	    
-	private ServiceConnection mConnection = new ServiceConnection() {
-	    public void onServiceConnected(ComponentName className, IBinder service) {
-	        mService = ((StepService.StepBinder)service).getService();
-	    }
-	
-	    public void onServiceDisconnected(ComponentName className) {
-	        mService = null;
-	    }
-	};
-	
-    private void startStepService() {        
-            startService(new Intent(MakeExercise.this,
-                    StepService.class));
-    }
-    
-    @SuppressWarnings("unused")
-	private void bindStepService() {   
-        bindService(new Intent(MakeExercise.this, 
-                StepService.class), mConnection, Context.BIND_AUTO_CREATE + Context.BIND_DEBUG_UNBIND);
-    }
+		   
     private void initializeViews(){
         showDate = (EditText) findViewById(R.id.showdate);  
         pickDate = (Button) findViewById(R.id.pickdate); 
