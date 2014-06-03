@@ -103,7 +103,7 @@ public class ManageExercises extends Activity {
 	    						"\n运动开始时间：" + list.get(i).getTime();	    						
 	    		data.add(string);
 	    	}	    			    
-	    }  	 //有错 ，没有处理list为空的情况	    	   
+	    }  	    	    	   
 	    return data;
 	}	
 	 

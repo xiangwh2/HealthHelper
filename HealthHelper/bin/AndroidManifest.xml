@@ -43,6 +43,8 @@
             android:name="com.example.healthhelper.MakePlan"
             android:label="@string/title_activity_make_plan" >
         </activity>
+        
+        <service android:name=".StepService"/>
     </application>
 
 </manifest>

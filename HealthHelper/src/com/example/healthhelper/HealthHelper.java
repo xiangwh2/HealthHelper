@@ -8,10 +8,12 @@ public class HealthHelper extends Application{
 	private FriendManager friendManager;
 	//private ExercisePlan currentEP;
 	private Exercise currentE;
+	private int step;
 	
 	public HealthHelper() {
 		exerciseManager = new ExerciseManager();
 		friendManager = new FriendManager();
+		step = 0;
 	}
 	
 	public ExerciseManager getExerManager() {
@@ -32,6 +34,14 @@ public class HealthHelper extends Application{
 	
 	public void setCurrentExercise(Exercise exer) throws CloneNotSupportedException {
 		currentE = (Exercise) exer.clone();
+	}
+	
+	public void setStep(int s) {
+		step = s;
+	}
+	
+	public int getStep() {
+		return step;
 	}
 	
 	/*public void setCurrentExercisePlan(ExercisePlan exerP) throws CloneNotSupportedException {

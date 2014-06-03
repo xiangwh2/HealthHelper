@@ -1,13 +1,16 @@
 package com.example.healthhelper;
 
 import java.security.PublicKey;
-
 import android.R.bool;
 import android.R.string;
 import android.net.NetworkInfo.State;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.DialogInterface.OnKeyListener;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -75,6 +78,8 @@ public class MakeExercise extends Activity {
 		button_start.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				startStepService();
+				
 				if (button_start.getText().toString() == "¿ªÊ¼") {				
 					button_start.setText("Í£Ö¹");	
 					start = true;
@@ -82,8 +87,11 @@ public class MakeExercise extends Activity {
 					Exercise oneExercise = new Exercise(eType, eTime, dest);
 					appHealthHelper.getExerManager().addOneExercise(oneExercise);
 					
+					int s = appHealthHelper.getStep();
+					appHealthHelper.DisplayToast("Step:" + s);
+					
 					try {					
-						appHealthHelper.setCurrentExercise(oneExercise);					
+						appHealthHelper.setCurrentExercise(oneExercise);				
 					} catch (CloneNotSupportedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -120,7 +128,7 @@ public class MakeExercise extends Activity {
 			}
 		});
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -140,4 +148,27 @@ public class MakeExercise extends Activity {
 		}
 		return false;
 	}	
+	
+	private StepService mService;
+	    
+	private ServiceConnection mConnection = new ServiceConnection() {
+	    public void onServiceConnected(ComponentName className, IBinder service) {
+	        mService = ((StepService.StepBinder)service).getService();
+	    }
+	
+	    public void onServiceDisconnected(ComponentName className) {
+	        mService = null;
+	    }
+	};
+	
+    private void startStepService() {        
+            startService(new Intent(MakeExercise.this,
+                    StepService.class));
+    }
+    
+    private void bindStepService() {   
+        bindService(new Intent(MakeExercise.this, 
+                StepService.class), mConnection, Context.BIND_AUTO_CREATE + Context.BIND_DEBUG_UNBIND);
+    }
+	
 }
