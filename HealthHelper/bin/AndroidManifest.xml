@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.healthhelper"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
+
+    <application
+        android:name="com.example.healthhelper.HealthHelper"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.healthhelper.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.healthhelper.MakeExercise"
+            android:label="@string/title_activity_make_exercise" >
+        </activity>
+        <activity
+            android:name="com.example.healthhelper.ShowExercise"
+            android:label="@string/title_activity_show_exercise" >
+        </activity>
+        <activity
+            android:name="com.example.healthhelper.ManageExercises"
+            android:label="@string/title_activity_manage_exercises" >
+        </activity>
+        <activity
+            android:name="com.example.healthhelper.ManageFriend"
+            android:label="@string/title_activity_manage_friend" >
+        </activity>
+        <activity
+            android:name="com.example.healthhelper.MakePlan"
+            android:label="@string/title_activity_make_plan" >
+        </activity>
+    </application>
+
+</manifest>

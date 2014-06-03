@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HealthHelper</string>
+    <string name="action_settings">Settings</string>
+    <string name="softname">Health Helper</string>
+    <string name="title_activity_make_exercise">MakeExercise</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_show_exercise">ShowExercise</string>
+    <string name="title_activity_manage_exercises">ManageExercises</string>
+    <string name="title_activity_manage_friend">ManageFriend</string>
+    <string name="title_activity_make_plan">MakePlan</string>
+
+</resources>
