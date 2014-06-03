@@ -38,51 +38,6 @@
             android:text="步行" />
     </RadioGroup>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/radioGroup2"
-        android:layout_centerVertical="true"
-        android:text="起始时间："
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="75dp"
-        android:text="运动类型："
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_below="@+id/textView2"
-        android:ems="10"
-        android:hint="请输入运动时间" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_below="@+id/editText1"
-        android:layout_marginTop="21dp"
-        android:text="起始地点："
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_below="@+id/textView3" />
-
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
@@ -93,4 +48,80 @@
         android:layout_toRightOf="@+id/button1"        
         android:text="查看本次运动" />
 
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_marginBottom="23dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/spinner1"
+        android:layout_alignLeft="@+id/textView2"
+        android:text="起始地点："
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/radioGroup1"
+        android:layout_marginTop="27dp"
+        android:text="起始时间："
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+       <Button
+           android:id="@+id/picktime"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/pickdate"
+           android:layout_toRightOf="@+id/pickdate"
+           android:text="选择时间" />
+
+       <TextView
+           android:id="@+id/textView1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignLeft="@+id/textView2"
+           android:layout_alignParentTop="true"
+           android:layout_marginTop="32dp"
+           android:text="运动类型："
+           android:textAppearance="?android:attr/textAppearanceMedium" />
+
+       <EditText
+           android:id="@+id/showdate"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignLeft="@+id/textView2"
+           android:layout_alignRight="@+id/textView2"
+           android:layout_below="@+id/textView2"
+           android:layout_weight="1"
+           android:ems="10" />
+
+       <Button
+           android:id="@+id/pickdate"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignTop="@+id/showdate"
+           android:layout_centerHorizontal="true"
+           android:text="选择日期" />
+
+       <EditText
+           android:id="@+id/showtime"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignBaseline="@+id/picktime"
+           android:layout_alignBottom="@+id/picktime"
+           android:layout_toLeftOf="@+id/button2"
+           android:layout_weight="1"
+           android:ems="10" >
+
+           <requestFocus />
+       </EditText>
+  
 </RelativeLayout>
