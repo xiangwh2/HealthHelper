@@ -120,16 +120,15 @@ public class MakeExercise extends Activity {
 			public void onClick(View v) {								
 				start = true;
 				eTime = m_EditTextDate.getText().toString()+"   "+m_EditTextTime.getText().toString();												
-				Exercise oneExercise = new Exercise(eType, eTime, dest);
-				appHealthHelper.getExerManager().addOneExercise(oneExercise);									
-				
+				Exercise oneExercise = new Exercise(eType, eTime, dest);															
 				try {					
-					appHealthHelper.setCurrentExercise(oneExercise);				
+					appHealthHelper.setCurrentExercise(oneExercise);			
 				} catch (CloneNotSupportedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
+				appHealthHelper.setEtype(0);
 				Intent intent = new Intent();
 				intent.setClass(MakeExercise.this, StepCount.class);
 				startActivity(intent);

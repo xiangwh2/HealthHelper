@@ -9,11 +9,15 @@ public class HealthHelper extends Application{
 	//private ExercisePlan currentEP;
 	private Exercise currentE;
 	private int step;
+	private int Etype;
+	private int num;
 	
 	public HealthHelper() {
 		exerciseManager = new ExerciseManager();
 		friendManager = new FriendManager();
 		step = 0;
+		Etype = 0;
+		num = 0;
 	}
 	
 	public ExerciseManager getExerManager() {
@@ -24,9 +28,13 @@ public class HealthHelper extends Application{
 		return friendManager;
 	}
 	
-	/*public ExercisePlan getCurrExercisePlan() {
-		return currentEP;
-	}*/
+	public int getEtype() {
+		return Etype;
+	}
+	
+	public void setEtype(int t) {
+		Etype = t;
+	}
 	
 	public Exercise getCurrExercise() {
 		return currentE;
@@ -42,6 +50,14 @@ public class HealthHelper extends Application{
 	
 	public int getStep() {
 		return step;
+	}
+	
+	public void setNum(int n) {
+		num = n;
+	}
+	
+	public int getNum() {
+		return num;
 	}
 	
 	/*public void setCurrentExercisePlan(ExercisePlan exerP) throws CloneNotSupportedException {

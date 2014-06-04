@@ -6,6 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background"
     tools:context=".ShowExercise" >
 
     <TextView
@@ -16,6 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp"
         android:text="运动详细信息"
+        android:textColor="@color/white"     
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -27,6 +29,7 @@
         android:layout_marginLeft="23dp"
         android:layout_marginTop="34dp"
         android:text="类型："
+        android:textColor="@color/white"     
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -37,6 +40,7 @@
         android:layout_below="@+id/textView2"
         android:layout_marginTop="32dp"
         android:text="运动开始时间："
+        android:textColor="@color/white"     
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -46,6 +50,7 @@
         android:layout_alignLeft="@+id/textView3"
         android:layout_centerVertical="true"
         android:text="运动开始地点："
+        android:textColor="@color/white"     
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -56,6 +61,7 @@
         android:layout_below="@+id/textView4"
         android:layout_marginTop="36dp"
         android:text="运动总时间："
+        android:textColor="@color/white"     
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -66,6 +72,7 @@
         android:layout_below="@+id/textView5"
         android:layout_marginTop="30dp"
         android:text="步数："
+        android:textColor="@color/white"     
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -76,6 +83,7 @@
         android:layout_below="@+id/textView6"
         android:layout_marginTop="28dp"
         android:text="卡路里消耗量："
+        android:textColor="@color/white"     
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

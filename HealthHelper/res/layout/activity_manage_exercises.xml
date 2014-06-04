@@ -6,6 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background"
     tools:context=".ManageExercises" >
 
     <Button
@@ -20,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/button1"
-        android:layout_below="@+id/radioGroup1" >
+        android:layout_below="@+id/radioGroup1" >        
     </ListView>
 
     <RadioGroup
@@ -37,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
+            android:textColor="@color/white"     
             android:text="查看" />
 
         <RadioButton
@@ -44,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30px"
+            android:textColor="@color/white"     
             android:text="删除" />
 
 	    <RadioButton
@@ -51,6 +54,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="30px"
+	        android:textColor="@color/white"     
 	        android:text="开始运动" />
 
     </RadioGroup>

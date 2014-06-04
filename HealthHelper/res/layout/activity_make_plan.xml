@@ -6,6 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background"
     tools:context=".MakePlan" >
 
     <TextView
@@ -15,6 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="新增运动计划"
+        android:textColor="@color/white"     
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <LinearLayout
@@ -36,39 +38,75 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="运动类型:"
+                android:textColor="@color/white"     
                 android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="154dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:text="运动总时间："
+                android:textColor="@color/white"     
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
         </LinearLayout>
 
-        <RadioGroup
-            android:id="@+id/radioGroup1"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <RadioButton
-                android:id="@+id/radio0"
+            <RadioGroup
+                android:id="@+id/radioGroup1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="跑步" />
+                android:layout_height="wrap_content" >
 
-            <RadioButton
-                android:id="@+id/radio1"
-                android:layout_width="wrap_content"
+                <RadioButton
+                    android:id="@+id/radio0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:textColor="@color/white"     
+                    android:text="跑步" />
+
+                <RadioButton
+                    android:id="@+id/radio1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"     
+                    android:text="步行" />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:text="步行" />
-        </RadioGroup>
+                android:layout_marginLeft="80dp"
+                android:ems="10" >
+
+                <requestFocus />
+            </EditText>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="130dp"
+            <Button
+                android:id="@+id/pickdate"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="运动起始时间："
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:text="起始日期" />
+
+            <Button
+                android:id="@+id/picktime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:text="起始时间" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -77,31 +115,11 @@
 
              <EditText android:id="@+id/showdate" android:layout_width="fill_parent"  
            android:layout_height="wrap_content" android:layout_weight="1"/>  
-       <Button android:id="@+id/pickdate" android:layout_width="wrap_content"  
-           android:layout_height="wrap_content" android:text="选择日期"/>  
            
              <EditText android:id="@+id/showtime" android:layout_width="fill_parent"  
-           android:layout_height="wrap_content" android:layout_weight="1"/>  
-       <Button android:id="@+id/picktime" android:layout_width="wrap_content"  
-           android:layout_height="wrap_content" android:text="选择时间"/>
+           android:layout_height="wrap_content" android:layout_weight="1"/>
 
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="154dp"
-            android:layout_height="wrap_content"
-            android:text="运动总时间："
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:ems="10" >
-
-            <requestFocus />
-        </EditText>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -113,6 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="预计消耗卡路里量："
+                android:textColor="@color/white"     
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
@@ -121,8 +140,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:text="2000"
-                android:inputType="numberPassword" />
+                android:text="0" />
         </LinearLayout>
 
         <LinearLayout
@@ -135,6 +153,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30px"
                 android:text="选择地点："
+                android:textColor="@color/white"     
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
@@ -144,6 +163,7 @@
                 android:layout_marginLeft="30px"
                 android:layout_marginTop="30px"
                 android:text="选择好友："
+                android:textColor="@color/white"     
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
 

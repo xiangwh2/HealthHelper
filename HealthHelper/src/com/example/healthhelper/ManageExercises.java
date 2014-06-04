@@ -66,8 +66,25 @@ public class ManageExercises extends Activity {
 					getData();					
 					Adapter.notifyDataSetChanged();
 				}
-				else if (m_rButton2.isChecked()) {
+				else if (m_rButton2.isChecked()) {					
+					try {
+						appHealthHelper.setCurrentExercise(list.get(arg2));
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					
+					if (appHealthHelper.getCurrExercise().getfinish() == false) {
+						appHealthHelper.setEtype(1);
+						appHealthHelper.setNum(arg2);
+						Intent intent = new Intent();
+						intent.setClass(ManageExercises.this, StepCount.class);
+						startActivity(intent);
+						ManageExercises.this.finish();
+					}
+					else {
+						appHealthHelper.DisplayToast("这个运动计划已完成！");
+					}				
 				}				
 			}			
 		});		
@@ -100,7 +117,7 @@ public class ManageExercises extends Activity {
 	    if (!list.isEmpty()) {
 	    	for (int i = 0; i < list.size(); ++i) {
 	    		String string = "运动类型：" + list.get(i).getType() +
-	    						"\n运动开始时间：" + list.get(i).getTime();	    						
+	    						"\n运动地点：" + list.get(i).getDest();	    						
 	    		data.add(string);
 	    	}	    			    
 	    }  	    	    	   

@@ -28,7 +28,7 @@ public class ShowExercise extends Activity {
 			mTextView1.setText("运动类型:" + appHealthHelper.getCurrExercise().getType());
 			mTextView2.setText("运动开始时间:" + appHealthHelper.getCurrExercise().getTime());
 			mTextView3.setText("运动开始地点:" + appHealthHelper.getCurrExercise().getDest());
-			mTextView4.setText("运动总时间:" + appHealthHelper.getCurrExercise().getTotalTime());
+			mTextView4.setText("运动总时间:" + appHealthHelper.getCurrExercise().getTotalTime() + "s");
 			mTextView5.setText("步数:" + appHealthHelper.getCurrExercise().getCount());
 			mTextView6.setText("卡路里消耗量:" + appHealthHelper.getCurrExercise().getTotalCal());
 		}

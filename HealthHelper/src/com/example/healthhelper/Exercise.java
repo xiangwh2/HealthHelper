@@ -3,6 +3,8 @@ package com.example.healthhelper;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R.bool;
+
 public class Exercise implements Cloneable{
 	private String ExerType;      //运动类型
 	private String ExerTime;      //开始时间
@@ -12,12 +14,14 @@ public class Exercise implements Cloneable{
 	private String Destination;   //预定地点
 	private int Count;            //步数
 	private List<Friend> friends;
+	private boolean finish;
 	
 	public Exercise(String EType, String ETime, String Dest) {
 		ExerType = EType;
 		ExerTime = ETime;
 		Destination = Dest;
-		ExerCal = Count = TotalCal = TotalTime = 0;		
+		ExerCal = Count = TotalCal = TotalTime = 0;
+		finish = false;
 		friends = new ArrayList<Friend>();
 	}
 	
@@ -29,6 +33,7 @@ public class Exercise implements Cloneable{
 		ExerCal = ECal;
 		Count = TotalCal = TotalTime = 0;
 		friends = new ArrayList<Friend>();
+		finish = false;
 	}
 	
 	public Exercise(String EType, String ETime, String Dest, int ECal, List<Friend> fs) {
@@ -38,14 +43,23 @@ public class Exercise implements Cloneable{
 		ExerCal = ECal;
 		Count = TotalCal = TotalTime = 0;
 		friends = new ArrayList<Friend>();
+		finish = false;
 	}
 	
 	public int getTotalTime() {
 		return TotalTime;
 	}
 	
+	public void setTotalTime(int t) {
+		TotalTime = t;
+	}
+	
 	public int getTotalCal() {
 		return TotalCal;
+	}
+	
+	public void setTotalCal(int c) {
+		TotalCal = c;
 	}
 	
 	public String getTime() {
@@ -66,6 +80,14 @@ public class Exercise implements Cloneable{
 	
 	public void setCount(int c) {
 		Count = c;
+	}
+	
+	public void setfinish(boolean b) {
+		finish = b;
+	}
+	
+	public boolean getfinish() {
+		return finish;
 	}
 	
 	public Object clone() throws CloneNotSupportedException   {
