@@ -1,17 +1,8 @@
 package com.example.healthhelper;
 
-import java.security.PublicKey;
-import android.R.bool;
-import android.R.string;
-import android.net.NetworkInfo.State;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
-import android.content.DialogInterface.OnKeyListener;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -22,21 +13,14 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 import java.util.Calendar;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.TimePicker;
 
 public class MakeExercise extends Activity {

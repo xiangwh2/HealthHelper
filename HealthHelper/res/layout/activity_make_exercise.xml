@@ -55,12 +55,12 @@
 
        <EditText
            android:id="@+id/showdate"
-           android:hint="pick date"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_alignLeft="@+id/textView2"
            android:layout_below="@+id/textView2"
-           />
+           android:hint="pick date" />
+
        <Button
            android:id="@+id/pickdate"
            android:layout_width="wrap_content"
@@ -71,10 +71,10 @@
 
        <EditText
            android:id="@+id/showtime"
-           android:hint="pick time"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:layout_below="@id/showdate">
+           android:layout_below="@id/showdate"
+           android:hint="pick time" >
 
        </EditText>
 
@@ -84,36 +84,34 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_alignBottom="@id/showtime"
-           android:layout_toRightOf="@id/showtime"
+           android:layout_alignLeft="@id/pickdate"
            android:text="选择时间" />
 
-       
-       
-       <TextView
-	        android:id="@+id/textView3"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_above="@+id/spinner1"
-	        android:layout_alignLeft="@+id/textView2"
-	        android:text="起始地点："
-	        android:textColor="@color/black"     
-	        android:textAppearance="?android:attr/textAppearanceMedium" />
-       
-       <Spinner
-	        android:id="@+id/spinner1"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_above="@+id/button1"
-	        android:layout_alignLeft="@+id/textView3"
-	        android:layout_marginBottom="23dp" />
-       
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/radioGroup1"
+            android:layout_toRightOf="@+id/pickdate"
+            android:text="起始地点："
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/black" />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_toRightOf="@+id/pickdate" />
+
         <Button
-	        android:id="@+id/button1"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_alignParentBottom="true"
-	        android:layout_alignParentLeft="true"
-	        android:layout_alignRight="@+id/textView3"
-	        android:text="Start" />
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="14dp"
+            android:layout_alignParentLeft="true"
+        	android:layout_alignParentRight="true"
+            android:text="开始" />
   
 </RelativeLayout>

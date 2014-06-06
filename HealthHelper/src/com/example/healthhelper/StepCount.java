@@ -1,6 +1,5 @@
 package com.example.healthhelper;
 
-import java.io.IOException;
 import java.util.List;
 
 import android.os.Bundle;
@@ -17,8 +16,24 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.graphics.Color;
+import android.location.Location;
 
-public class StepCount extends Activity {
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationListener;
+import com.amap.api.location.LocationManagerProxy;
+import com.amap.api.location.LocationProviderProxy;
+import com.amap.api.maps2d.AMap;
+import com.amap.api.maps2d.AMap.CancelableCallback;
+import com.amap.api.maps2d.CameraUpdate;
+import com.amap.api.maps2d.CameraUpdateFactory;
+import com.amap.api.maps2d.LocationSource;
+import com.amap.api.maps2d.MapView;
+import com.amap.api.maps2d.model.BitmapDescriptorFactory;
+import com.amap.api.maps2d.model.MyLocationStyle;
+import com.example.healthhelper.R;
+
+public class StepCount extends Activity implements LocationSource, AMapLocationListener {
 	private TextView m_TextView,timeView,calView;
 	private HealthHelper appHealthHelper;
 	private int step;
@@ -26,10 +41,19 @@ public class StepCount extends Activity {
 	private int time;
 	private int cal;
 	
+	private AMap aMap;
+	private MapView mapView;
+	private OnLocationChangedListener mListener;
+	private LocationManagerProxy mAMapLocationManager;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_step_count);
+		
+		mapView = (MapView) findViewById(R.id.map);
+		mapView.onCreate(savedInstanceState);
+		init();
 		
 		appHealthHelper = (HealthHelper)getApplicationContext();
 		m_TextView = (TextView) findViewById(R.id.textView2);
@@ -79,9 +103,102 @@ public class StepCount extends Activity {
 		});
 	}
 	
+	private void changeCamera(CameraUpdate update, CancelableCallback callback) {  
+        aMap.animateCamera(update, 1000, callback);          
+    } 
+	
+	private void init() {
+		if (aMap == null) {
+			aMap = mapView.getMap();
+			setUpMap();
+		}
+	}
+
+	private void setUpMap() {
+		MyLocationStyle myLocationStyle = new MyLocationStyle();
+		myLocationStyle.myLocationIcon(BitmapDescriptorFactory
+				.fromResource(R.drawable.location_marker));
+		myLocationStyle.strokeColor(Color.BLACK);
+		myLocationStyle.radiusFillColor(Color.argb(10, 0, 0, 20));
+		myLocationStyle.strokeWidth(1.0f);
+		aMap.setMyLocationStyle(myLocationStyle);
+		aMap.setLocationSource(this);
+		aMap.getUiSettings().setMyLocationButtonEnabled(true);
+		aMap.setMyLocationEnabled(true);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		mapView.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		mapView.onPause();
+		deactivate();
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		mapView.onSaveInstanceState(outState);
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		mapView.onDestroy();
+	}
+
+	public void onLocationChanged(Location location) {
+	}
+
+	
+	public void onProviderDisabled(String provider) {
+	}
+
+	
+	public void onProviderEnabled(String provider) {
+	}
+
+	
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+	}
+
+	public void onLocationChanged(AMapLocation aLocation) {
+		if (mListener != null && aLocation != null) {
+			mListener.onLocationChanged(aLocation);
+			changeCamera(CameraUpdateFactory.zoomTo(14),null);
+		}
+	}
+
+	
+	@Override
+	public void activate(OnLocationChangedListener listener) {
+		mListener = listener;
+		if (mAMapLocationManager == null) {
+			mAMapLocationManager = LocationManagerProxy.getInstance(this);
+			
+			mAMapLocationManager.requestLocationUpdates(
+					LocationProviderProxy.AMapNetwork, 2000, 10, this);
+		}
+	}
+
+	
+	@Override
+	public void deactivate() {
+		mListener = null;
+		if (mAMapLocationManager != null) {
+			mAMapLocationManager.removeUpdates(this);
+			mAMapLocationManager.destroy();
+		}
+		mAMapLocationManager = null;
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.step_count, menu);
 		return true;
 	}
@@ -135,7 +252,6 @@ public class StepCount extends Activity {
     
     @Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		// TODO Auto-generated method stub
 		if(keyCode==KeyEvent.KEYCODE_BACK&&event.getRepeatCount()==0){
 			Intent intent = new Intent();
 			intent.setClass(StepCount.this, MainActivity.class);
