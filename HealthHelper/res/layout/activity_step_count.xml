@@ -18,7 +18,7 @@
         android:layout_marginLeft="18dp"
         android:layout_marginTop="65dp"
         android:text="步数：" 
-        android:textColor="@color/white"       
+        android:textColor="@color/black"       
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -29,7 +29,7 @@
         android:layout_toRightOf="@+id/textView1"
         android:text="0"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/white" />
+        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/button1"
@@ -48,7 +48,7 @@
         android:layout_below="@+id/textView1"
         android:layout_marginTop="48dp"
         android:text="运动时间："
-        android:textColor="@color/white" 
+        android:textColor="@color/black" 
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -58,7 +58,7 @@
         android:layout_alignBottom="@+id/textView3"
         android:layout_centerHorizontal="true"
         android:text="0 s"
-        android:textColor="@color/white" 
+        android:textColor="@color/black" 
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -69,7 +69,7 @@
         android:layout_centerVertical="true"
         android:text="卡路里消耗量："
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/white" />
+        android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/textView6"
@@ -80,7 +80,7 @@
         android:layout_alignRight="@+id/button1"
         android:layout_toRightOf="@+id/textView5"
         android:text="0"
-        android:textColor="@color/white" 
+        android:textColor="@color/black" 
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

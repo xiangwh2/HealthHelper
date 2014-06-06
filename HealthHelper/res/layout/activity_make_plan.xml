@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="新增运动计划"
-        android:textColor="@color/white"     
+        android:textColor="@color/black"     
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <LinearLayout
@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="运动类型:"
-                android:textColor="@color/white"     
+                android:textColor="@color/black"     
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dp"
                 android:text="运动总时间："
-                android:textColor="@color/white"     
+                android:textColor="@color/black"     
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
         </LinearLayout>
@@ -66,14 +66,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:textColor="@color/white"     
+                    android:textColor="@color/black"     
                     android:text="跑步" />
 
                 <RadioButton
                     android:id="@+id/radio1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"     
+                    android:textColor="@color/black"     
                     android:text="步行" />
             </RadioGroup>
 
@@ -131,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="预计消耗卡路里量："
-                android:textColor="@color/white"     
+                android:textColor="@color/black"     
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
@@ -153,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30px"
                 android:text="选择地点："
-                android:textColor="@color/white"     
+                android:textColor="@color/black"     
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
@@ -163,7 +163,7 @@
                 android:layout_marginLeft="30px"
                 android:layout_marginTop="30px"
                 android:text="选择好友："
-                android:textColor="@color/white"     
+                android:textColor="@color/black"     
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
 
